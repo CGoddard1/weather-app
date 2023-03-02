@@ -11,7 +11,26 @@
     <title>Weather App</title>
   </head>
   <body>
-    <h1>What's the Weather like?</h1>
+        <div class="container">
+            <!-- jumbotron -->
+            <div class="jumbotron-fluid bg-dark text-white text-center">
+                <div class="container">
+                    <h1 class="display-1">What's the Weather like?</h1>
+                </div>
+            </div>
+            <!-- first row -->
+            <div class="row">
+                <div class="col-3 m-2 bg-light">
+                    <h3>Please Search for a City:</h3>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" is="city-input" aria-describedBy="basic-addon2">
+                        <div class="input-group-append">
+                            <button id="add-city" class="btn btn-outline-secondary bg-primary" type="button"><ion-icon name="search-outline"></ion-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
