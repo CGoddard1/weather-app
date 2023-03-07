@@ -26,9 +26,12 @@ var button= document.querySelector('.submit');
 
 
 button.addEventListener('click', function(name){
+// fetch('api.openweathermap.org/data/2.5/forecast?lat=40.7143&lon=74.006&appid=63606d5f87fb1ca9e2705345f9cb648e')
 fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=63606d5f87fb1ca9e2705345f9cb648e')
+// fetch('api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml&appid=63606d5f87fb1ca9e2705345f9cb648e')
 .then(response => response.json())
 .then(data => {
+    console.log(data);
   var tempValue = data['main']['temp'];
   var nameValue = data['name'];
   var descValue = data['weather'][0]['description'];
@@ -37,6 +40,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=6
   desc.innerHTML = "Desc - "+descValue;
   temp.innerHTML = "Temp - "+tempValue;
   input.value ="";
+//   Math.round((data.list[i].main.temp - 273.15) * 1.8 + 32) +
+//                 " &#176;F";
 
 })
 
