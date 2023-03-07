@@ -1,22 +1,3 @@
-// var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={17e65b89990b0db2e2339b8d268552e4}`';
-
-// var responseText = document.getElementById('.input-group-append');
-
-// function getApi(requestUrl) {
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       console.log(response);
-//       if (response.status != 200) {
-//         responseText.textContent = response.status;
-//       }
-//       return response.json();
-//   });
-// }
-
-// getApi(requestUrl);
-
-
-
 // var input = document.querySelector('.input_text');
 // var main = document.querySelector('#name');
 // var temp = document.querySelector('.temp');
@@ -54,10 +35,28 @@ var currWeatherDiv = $("#currentWeather");
 var forecastDiv = $("#weatherForecast");
 var citiesArray;
 
-// local storage for weather array
+// local storage for weather array to keep search history
 if (localStorage.getItem("localWeatherSearches")) {
     citiesArray = JSON.parse(localStorage.getItem("localWeatherSearches"));
     writeSearchHistory(citiesArray);
 } else {
     citiesArray = [];
+};
+
+// current weather function using the API, allows for date and calls from the current weather H2 + temp/humidity/wind speed
+function returnCurrentWeather(cityName) {
+  let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+
+  $.get(queryURL).then(function(response){
+      let currTime = new Date(response.dt*1000);
+      let weatherIcon = `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`;
+
+      currWeatherDiv.html(`
+      <h2>${response.name}, ${response.sys.country} (${currTime.getMonth()+1}/${currTime.getDate()}/${currTime.getFullYear()})<img src=${weatherIcon} height="70px"></h2>
+      <p>Temperature: ${response.main.temp} &#176;C</p>
+      <p>Humidity: ${response.main.humidity}%</p>
+      <p>Wind Speed: ${response.wind.speed} m/s</p>
+      `, returnUVIndex(response.coord))
+      createHistoryButton(response.name);
+  })
 };
