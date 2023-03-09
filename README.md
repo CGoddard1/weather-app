@@ -39,3 +39,23 @@ THEN I am again presented with current and future conditions for that city
 The following image shows the web application's appearance and functionality:
 
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+
+## Screenshot of working scheduler
+
+<img src="Screen Shot 2023-03-08 at 9.52.09 PM.png">
+
+## Authors
+
+Cole Goddard
+UNCC Project Design
+
+## Acknowledgments
+
+Josh Lovin; Git Hub: jdlovin7185
+Open AI; Chat GPT
+Youtube: Steven Griffith - Prof3ssorSt3v3: OpenWeatherMap API Tutorial
+github user: shanjairaj7 - openweathermap
+github user: Cherjios - 06-server-side-APIs-Weather-Dashboard
+linuxhint.com - celcius to fahrenheit conversion
+github user: DreissenZulu - weather-dashboard
+
