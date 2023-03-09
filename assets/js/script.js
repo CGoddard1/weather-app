@@ -1,34 +1,3 @@
-// var input = document.querySelector('.input_text');
-// var main = document.querySelector('#name');
-// var temp = document.querySelector('.temp');
-// var desc = document.querySelector('.desc');
-// var clouds = document.querySelector('.clouds');
-// var button= document.querySelector('.submit');
-
-
-// button.addEventListener('click', function(name){
-// // fetch('api.openweathermap.org/data/2.5/forecast?lat=40.7143&lon=74.006&appid=63606d5f87fb1ca9e2705345f9cb648e')
-// fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=63606d5f87fb1ca9e2705345f9cb648e')
-// // fetch('api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml&appid=63606d5f87fb1ca9e2705345f9cb648e')
-// .then(response => response.json())
-// .then(data => {
-//     console.log(data);
-//   var tempValue = data['main']['temp'];
-//   var nameValue = data['name'];
-//   var descValue = data['weather'][0]['description'];
-
-//   main.innerHTML = nameValue;
-//   desc.innerHTML = "Desc - "+descValue;
-//   temp.innerHTML = "Temp - "+tempValue;
-//   input.value ="";
-// //   Math.round((data.list[i].main.temp - 273.15) * 1.8 + 32) +
-// //                 " &#176;F";
-
-// })
-
-// .catch(err => alert("Wrong city name!"));
-// })
-
 // api key + variables
 const apiKey = "63606d5f87fb1ca9e2705345f9cb648e";
 var currWeatherDiv = $("#currentWeather");
@@ -129,7 +98,7 @@ function createHistoryButton(cityName) {
   }
 
   $("#previousSearch").prepend(`
-  <button class="btn btn-light cityHistoryBtn" value='${cityName}'>${cityName}</button>
+  <button class="btn btn-dark cityHistoryBtn" value='${cityName}'>${cityName}</button>
   `);
 }
 
@@ -138,3 +107,39 @@ function writeSearchHistory(array) {
       createHistoryButton(array[i]);
   })
 }
+
+// Get a deafult weather search
+returnCurrentWeather("Toronto");
+returnWeatherForecast("Toronto");
+
+$("#submitCity").click(function() {
+    event.preventDefault();
+    let cityName = $("#cityInput").val();
+    returnCurrentWeather(cityName);
+    returnWeatherForecast(cityName);
+});
+
+$("#previousSearch").click(function() {
+    let cityName = event.target.value;
+    returnCurrentWeather(cityName);
+    returnWeatherForecast(cityName);
+})
+
+// function to change celcius to feirenheit in the console but not on the page
+function cToF(celsius) 
+{
+  var Temp = celsius;
+  var cToFahr = Temp * 9 / 5 + 32;
+  var message = Temp+'\xB0C is ' + cToFahr + ' \xB0F.';
+    console.log(message);
+}
+
+function fToC(fahrenheit) 
+{
+  var fTemp = fahrenheit;
+  var fToCel = (fTemp - 32) * 5 / 9;
+  var message = fTemp+'\xB0F is ' + fToCel + '\xB0C.';
+    console.log(message);
+} 
+cToF(60);
+fToC(45);
