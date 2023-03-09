@@ -44,6 +44,10 @@ The following image shows the web application's appearance and functionality:
 
 <img src="Screen Shot 2023-03-08 at 9.52.09 PM.png">
 
+## link to working site
+
+<link href="https://cgoddard1.github.io/weather-app/">
+
 ## Authors
 
 Cole Goddard
